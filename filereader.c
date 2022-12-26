@@ -1,18 +1,6 @@
 
 #include "filereader.h"
 
-typedef struct schar
-{
-    char value;
-    struct schar *next;
-} schar;
-
-typedef struct string
-{
-    int length;
-    schar *data;
-} string;
-
 string *new_string()
 {
     string *nstring = (string *)malloc(sizeof(string));
@@ -45,22 +33,9 @@ void add(string *text, char character)
     text->length++;
 }
 
-char *string_2_char_array(string *text)
+string *file_2_string(char *filename)
 {
-    char *char_array = (char *)malloc(sizeof(char) * text->length);
-    int index = 0;
-    while (text->data != NULL)
-    {
-        char_array[index] = text->data->value;
-        index++;
-        text->data = text->data->next;
-    }
-    return char_array;
-}
-
-char *file_2_string(char *filename)
-{
-    FILE *file = NULL;
+    FILE *file;
     file = fopen(filename, "r");
     if (file == NULL)
     {
@@ -70,13 +45,12 @@ char *file_2_string(char *filename)
     string *text = new_string();
     char temp_char;
 
-    while (temp_char != EOF)
+    while (!feof(file))
     {
         temp_char = fgetc(file);
-        add(text, temp_char);
+        if (temp_char != ' ')
+            add(text, temp_char);
     }
     fclose(file);
-    char *file_content = string_2_char_array(text);
-    free(text);
-    return file_content;
+    return text;
 }
