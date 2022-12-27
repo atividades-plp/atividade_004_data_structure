@@ -1,6 +1,6 @@
 #include "stack.h"
 
-snode *new_node(int value)
+snode *new_stack_node(int value)
 {
     snode *nnode = (snode *)malloc(sizeof(snode));
     nnode->next_node = NULL;
@@ -18,7 +18,7 @@ stack *new_stack()
 
 void *push(stack *stack, int value)
 {
-    snode *nnode = new_node(value);
+    snode *nnode = new_stack_node(value);
     nnode->next_node = stack->data;
     stack->data = nnode;
     stack->length++;

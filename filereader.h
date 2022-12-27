@@ -2,19 +2,8 @@
 #define FILE_HEADER
 #include <stdio.h>
 #include <stdlib.h>
+#include "linkedlist.h"
 
-typedef struct schar
-{
-    char value;
-    struct schar *next;
-} schar;
-
-typedef struct string
-{
-    int length;
-    schar *data;
-} string;
-
-string *file_2_string(char *filename);
+list *file_2_numbers(char *filename);
 
 #endif

@@ -1,39 +1,7 @@
 
 #include "filereader.h"
 
-string *new_string()
-{
-    string *nstring = (string *)malloc(sizeof(string));
-    nstring->length = 0;
-    nstring->data = NULL;
-    return nstring;
-}
-
-schar *new_schar(char character)
-{
-    schar *nchar = (schar *)malloc(sizeof(schar));
-    nchar->value = character;
-    nchar->next = NULL;
-    return nchar;
-}
-
-void add(string *text, char character)
-{
-    schar *nchar = new_schar(character);
-    if (text->length == 0)
-    {
-        text->data = nchar;
-        text->length++;
-        return;
-    }
-    schar *temp_char = text->data;
-    while (temp_char->next != NULL)
-        temp_char = temp_char->next;
-    temp_char->next = nchar;
-    text->length++;
-}
-
-string *file_2_string(char *filename)
+list *file_2_numbers(char *filename)
 {
     FILE *file;
     file = fopen(filename, "r");
@@ -42,15 +10,15 @@ string *file_2_string(char *filename)
         printf("Cannot open this file: %s", filename);
         return NULL;
     }
-    string *text = new_string();
-    char temp_char;
+    list *list = new_list();
+    char temp_char[50];
 
-    while (!feof(file))
+    while (fgets(temp_char, 50, file) != NULL)
     {
-        temp_char = fgetc(file);
-        if (temp_char != ' ')
-            add(text, temp_char);
+        int temp_number;
+        sscanf(temp_char, "%d", &temp_number);
+        add(list, temp_number);
     }
     fclose(file);
-    return text;
+    return list;
 }
