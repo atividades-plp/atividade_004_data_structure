@@ -1,5 +1,5 @@
-#ifndef STACK_FILE
-#define STACK_FILE
+#ifndef STACK_HEADER
+#define STACK_HEADER
 #include <stdio.h>
 #include <stdlib.h>
 

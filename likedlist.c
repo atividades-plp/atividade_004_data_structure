@@ -16,7 +16,7 @@ lnode *new_list_node(int value)
     return nnode;
 }
 
-void add(list *list, int value)
+void add_list_node(list *list, int value)
 {
     lnode *nnode = new_list_node(value);
     if (list->length == 0)

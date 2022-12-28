@@ -17,7 +17,7 @@ list *file_2_numbers(char *filename)
     {
         int temp_number;
         sscanf(temp_char, "%d", &temp_number);
-        add(list, temp_number);
+        add_list_node(list, temp_number);
     }
     fclose(file);
     return list;
