@@ -1,5 +1,5 @@
-
 #include "filereader.h"
+#include "integer.h"
 
 list *file_2_numbers(char *filename)
 {
@@ -14,11 +14,7 @@ list *file_2_numbers(char *filename)
     char temp_char[50];
 
     while (fgets(temp_char, 50, file) != NULL)
-    {
-        int temp_number;
-        sscanf(temp_char, "%d", &temp_number);
-        add_list_node(list, temp_number);
-    }
+        add_list_node(list, parse_int(temp_char));
     fclose(file);
     return list;
 }
