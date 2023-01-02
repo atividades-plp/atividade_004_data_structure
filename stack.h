@@ -18,5 +18,6 @@ typedef struct stack
 stack *new_stack();
 void *push(stack *stack, int value);
 snode *pop(stack *stack);
+void print_stack(stack *stack);
 
 #endif

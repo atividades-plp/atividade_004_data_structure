@@ -31,3 +31,15 @@ void add_list_node(list *list, int value)
     temp_node->next = nnode;
     list->length++;
 }
+
+void print_list(list *list)
+{
+    if (list->length == 0)
+        return;
+    lnode *node = list->data;
+    while (node != NULL)
+    {
+        printf("%d ", node->value);
+        node = node->next;
+    }
+}

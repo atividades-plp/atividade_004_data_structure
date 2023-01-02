@@ -33,3 +33,15 @@ snode *pop(stack *stack)
     stack->length--;
     return node;
 }
+
+void print_stack(stack *stack)
+{
+    if (stack->length == 0)
+        return;
+    snode *node = stack->data;
+    while (node != NULL)
+    {
+        printf("%d ", node->value);
+        node = node->next_node;
+    }
+}

@@ -98,17 +98,16 @@ int calculate_expression_stack(char *expression)
 
         if (is_integer(symbol))
         {
+            // printf("Inteiro: %c\n", symbol);
             char text[] = {symbol, '\0'};
             strcat(buffer, text);
 
             if (!is_integer(expression[index + 1]))
-            {
-                printf("Adicionando...%d\n", parse_int(buffer));
                 push(numbers, parse_int(buffer));
-            }
         }
         else if (is_operation(symbol))
         {
+            // printf("Operação: %c\n", symbol);
             operation_id operation = get_operation(symbol);
             push(operations, operation);
             buffer = new_buffer();
@@ -118,14 +117,15 @@ int calculate_expression_stack(char *expression)
             int y = pop(numbers)->value;
             int x = pop(numbers)->value;
             operation_id operation = pop(operations)->value;
+            // printf("Calculando: %d %d %d\n", x,operation,y);
             push(numbers, wrapper(operation, x, y));
         }
         index++;
     }
-
+    int expression_result = pop(numbers)->value;
     free(numbers);
     free(operations);
-    return pop(numbers)->value;
+    return expression_result;
 }
 
 int calculate_expression_tree(char *expression)

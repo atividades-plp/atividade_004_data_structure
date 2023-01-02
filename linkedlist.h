@@ -17,5 +17,6 @@ typedef struct list
 
 list *new_list();
 void add_list_node(list *list, int value);
+void print_list(list *list);
 
 #endif
