@@ -60,16 +60,19 @@ hashtable *list_2_hashtable(list *numbers)
 
 int main()
 {
-    list *numbers = file_2_numbers("C:\\Users\\callidus\\Desktop\\Gabriel\\projetos\\github\\atividade_004_data_structure\\data\\input.txt");
-    print_title("NÚMEROS LIDOS DO ARQUIVO");
+    list *numbers = file_2_numbers("./data/input.txt");
+    print_title("NUMEROS LIDOS DO ARQUIVO");
     print_list(numbers);
     break_lines(2);
+
+    if (numbers == NULL || numbers->length == 0)
+        return 0;
 
     print_title("Lendo dados de um arquivo e alocando em uma PILHA");
     print_stack(list_2_stack(numbers));
     break_line();
 
-    print_title("Lendo dados de um arquivo e alocando em uma ÁRVORE BINÁRIA");
+    print_title("Lendo dados de um arquivo e alocando em uma ARVORE BINARIA");
     print_inorder(list_2_tree(numbers)->root);
     break_line();
 
@@ -82,7 +85,7 @@ int main()
     printf("%s = %d", expression, calculate_expression_stack(expression));
     break_line();
 
-    print_title("Calculadora utilizando ÁRVORE BINÁRIA");
+    print_title("Calculadora utilizando ARVORE BINARIA");
     printf("%s = %d", expression, calculate_expression_tree(expression));
 
     return 0;

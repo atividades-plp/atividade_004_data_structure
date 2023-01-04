@@ -1,5 +1,8 @@
 #include "calculator.h"
+#include "stack.h"
+#include "calctree.h"
 #include "integer.h"
+#include "operations.h"
 #define false 0
 #define true 1
 #define BUFFER_SIZE 100
@@ -11,26 +14,6 @@
 
 typedef int bool;
 typedef int operation_id;
-
-int sum(int x, int y)
-{
-    return x + y;
-}
-
-int sub(int x, int y)
-{
-    return x - y;
-}
-
-int mul(int x, int y)
-{
-    return x * y;
-}
-
-int divs(int x, int y)
-{
-    return x / y;
-}
 
 bool is_operation(char symbol)
 {
@@ -130,5 +113,7 @@ int calculate_expression_stack(char *expression)
 
 int calculate_expression_tree(char *expression)
 {
-    return 0;
+    calctree *tree = new_calctree();
+    add_calctree_node(tree, UNDEFINED, NULL);
+    return calculate_calctree(tree, tree->root);
 }

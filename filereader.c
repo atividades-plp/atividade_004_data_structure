@@ -7,7 +7,7 @@ list *file_2_numbers(char *filename)
     file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf("Cannot open this file: %s", filename);
+        printf("Cannot open this file: %s\n", filename);
         return NULL;
     }
     list *list = new_list();

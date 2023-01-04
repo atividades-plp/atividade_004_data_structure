@@ -37,7 +37,10 @@ snode *pop(stack *stack)
 void print_stack(stack *stack)
 {
     if (stack->length == 0)
+    {
+        printf("Pilha vazia.");
         return;
+    }
     snode *node = stack->data;
     while (node != NULL)
     {

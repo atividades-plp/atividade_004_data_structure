@@ -34,8 +34,11 @@ void add_list_node(list *list, int value)
 
 void print_list(list *list)
 {
-    if (list->length == 0)
+    if (list == NULL || list->length == 0)
+    {
+        printf("Lista vazia.");
         return;
+    }
     lnode *node = list->data;
     while (node != NULL)
     {
