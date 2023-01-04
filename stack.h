@@ -15,9 +15,16 @@ typedef struct stack
     snode *data;
 } stack;
 
+// Cria uma nova pilha
 stack *new_stack();
+
+// Empilha um elemento em uma pilha
 void *push(stack *stack, int value);
+
+// Desempilha um elemento em uma pilha
 snode *pop(stack *stack);
+
+// Imprime os elementos de uma pilha
 void print_stack(stack *stack);
 
 #endif

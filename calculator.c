@@ -15,11 +15,13 @@
 typedef int bool;
 typedef int operation_id;
 
+// Verifica se símbolo é uma operação suportada
 bool is_operation(char symbol)
 {
     return symbol == '-' || symbol == '+' || symbol == '*' || symbol == '/';
 }
 
+// Retorna o ID da operação representada pelo símbolo
 operation_id get_operation(char symbol)
 {
     if (symbol == '+')
@@ -33,6 +35,7 @@ operation_id get_operation(char symbol)
     return UNDEFINED;
 }
 
+// Verifica se símbolo é um inteiro
 bool is_integer(char symbol)
 {
     char numbers[] = "0123456789";
@@ -43,6 +46,7 @@ bool is_integer(char symbol)
     return false;
 }
 
+// Encapsula as operações matemáticas suportadas
 int wrapper(operation_id operation, int x, int y)
 {
     if (operation == MULTIPLICATION)
@@ -56,6 +60,7 @@ int wrapper(operation_id operation, int x, int y)
     return 0;
 }
 
+// Cria um buffer de char para ser utilizado como variável auxiliar
 char *new_buffer()
 {
     char *buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE);
@@ -79,28 +84,25 @@ int calculate_expression_stack(char *expression)
     {
         char symbol = expression[index];
 
-        if (is_integer(symbol))
+        if (is_integer(symbol)) // Se inteiro, concatena-o na string para que seja transformado em inteiro
         {
-            // printf("Inteiro: %c\n", symbol);
             char text[] = {symbol, '\0'};
             strcat(buffer, text);
 
             if (!is_integer(expression[index + 1]))
-                push(numbers, parse_int(buffer));
+                push(numbers, parse_int(buffer)); // Adiciona o inteiro a pilha
         }
-        else if (is_operation(symbol))
+        else if (is_operation(symbol)) // Se operação, adiciona operação na pilha e renova o buffer
         {
-            // printf("Operação: %c\n", symbol);
             operation_id operation = get_operation(symbol);
             push(operations, operation);
             buffer = new_buffer();
         }
-        else if (symbol == ')')
+        else if (symbol == ')') // Se ), realiza o cálculo do resultado e adiciona novamente na pilha
         {
             int y = pop(numbers)->value;
             int x = pop(numbers)->value;
             operation_id operation = pop(operations)->value;
-            // printf("Calculando: %d %d %d\n", x,operation,y);
             push(numbers, wrapper(operation, x, y));
         }
         index++;

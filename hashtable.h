@@ -16,9 +16,16 @@ typedef struct hashtable
     hnode **data;
 } hashtable;
 
+// Cria uma nova tabela hash
 hashtable *new_hashtable(int size);
+
+// Retorna o hash de uma chave
 int get_hash(int key, int size);
+
+// Adiciona um novo nó a tabela hash
 void add_hash_node(hashtable *table, int value, int key);
+
+// Imprime os elementos de uma tabela hash
 void print_hashtable(hashtable *table);
 
 #endif

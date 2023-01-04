@@ -17,8 +17,13 @@ typedef struct calctree
     ctnode *root;
 } calctree;
 
+// Cria um novo nó para a árvore de cálculo
 ctnode *new_calctree_node(int value, int (*operation)(int, int));
+
+// Cria uma nova árvore de cálculo
 calctree *new_calctree();
+
+// Calcula recursivamente o resultado da árvore de cálculo
 int calculate_calctree(calctree *tree, ctnode *current_root);
 
 #endif

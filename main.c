@@ -73,7 +73,12 @@ int main()
     break_line();
 
     print_title("Lendo dados de um arquivo e alocando em uma ARVORE BINARIA");
+    printf("> Pre-ordem\n");
+    print_preorder(list_2_tree(numbers)->root);
+    printf("\n> Em-ordem\n");
     print_inorder(list_2_tree(numbers)->root);
+    printf("\n> Pos-ordem\n");
+    print_postorder(list_2_tree(numbers)->root);
     break_line();
 
     print_title("Lendo dados de um arquivo e alocando em uma TABELA HASH");
