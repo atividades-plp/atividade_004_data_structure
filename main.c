@@ -86,12 +86,12 @@ int main()
     break_lines(2);
 
     print_title("Calculadora utilizando PILHA");
-    char *expression = "(2+(3*(5-1)))";
+    char *expression = "(2+(3*(5+(1-4))))";
     printf("%s = %d", expression, calculate_expression_stack(expression));
     break_line();
 
     print_title("Calculadora utilizando ARVORE BINARIA");
-    printf("%s = %d", expression, calculate_expression_tree());
+    printf("%s = %d", "(2+(3*(5-1)))", calculate_expression_tree());
 
     return 0;
 }
