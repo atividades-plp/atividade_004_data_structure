@@ -17,8 +17,8 @@ typedef struct calctree
     ctnode *root;
 } calctree;
 
+ctnode *new_calctree_node(int value, int (*operation)(int, int));
 calctree *new_calctree();
-void add_calctree_node(calctree *tree, int value, int (*operation)(int, int));
 int calculate_calctree(calctree *tree, ctnode *current_root);
 
 #endif

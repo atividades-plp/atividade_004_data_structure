@@ -86,7 +86,7 @@ int main()
     break_line();
 
     print_title("Calculadora utilizando ARVORE BINARIA");
-    printf("%s = %d", expression, calculate_expression_tree(expression));
+    printf("%s = %d", expression, calculate_expression_tree());
 
     return 0;
 }

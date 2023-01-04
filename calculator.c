@@ -111,9 +111,15 @@ int calculate_expression_stack(char *expression)
     return expression_result;
 }
 
-int calculate_expression_tree(char *expression)
+int calculate_expression_tree()
 {
     calctree *tree = new_calctree();
-    add_calctree_node(tree, UNDEFINED, NULL);
+    tree->root = new_calctree_node(UNDEFINED, sum);
+    tree->root->left = new_calctree_node(2, NULL);
+    tree->root->right = new_calctree_node(UNDEFINED, mul);
+    tree->root->right->left = new_calctree_node(3, NULL);
+    tree->root->right->right = new_calctree_node(UNDEFINED, sub);
+    tree->root->right->right->left = new_calctree_node(5, NULL);
+    tree->root->right->right->right = new_calctree_node(1, NULL);
     return calculate_calctree(tree, tree->root);
 }
